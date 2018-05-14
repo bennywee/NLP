@@ -1,0 +1,77 @@
+---
+title: "NLP Notes"
+output: html_notebook
+---
+
+# Getting started with NLP
+
+<https://medium.com/@gon.esbuyo/get-started-with-nlp-part-i-d67ca26cc828>
+
+## What is NLP?
+
+Natural Language Processing (NLP) -- appllication of computational techniques to the analysis and sunthesis of natural language and speech. Using algorithms to understand and manpipulate human language and speech.
+
+Machine Learning (ML), Deep Learning (neural nets) are a set of tools used to solve NLP tasks. 
+
+## Challenges of NLP
+
+**Ambiguity** - Understanding and modelling elements with _various contexts_. Words are unique but can have different meanings in different contexts. There exists a difference between the **signifier** (representation of information, _word_) and the **signified** (the meaning of that information, _concept_)
+
+**Synonymy** - Expressing the same idea with different terms. Example _fine_ is synonym of _thin_ in the context of density, or synonym of _fee_ in the case of punshiments.
+
+**Syntax** - Several rules and irregularities with different cases of sentence construction.
+
+**Coreference** - Reference to specific concepts that were mentioned earlier or directly omitted because they are deduced from context.
+
+**Normalisation vs Information** - Generalising language. All lower case, convert plural words to singular ones if we don't want to consider _dog_ and _dogs_ as two separate entities. When we normalise, we are losing part of the information in exchange to generalise it better.
+
+**Representation** - Discrete values of letters (can't estimate a value between 'a' and 'b'). Solution is to transform words into vectors,( _word embeddings_ ).
+
+**Peronalisty, intention and style** - Irony, sarcasm.
+
+## Basic NLP Techniques
+
+a) **Setmming and lemmatising** -- Reducing forms of a word to a common base form.
+
+> I **am** a student -> {am|are|is} -> I **be** a student 
+
+> My **dog's** fur **is** dark -> {dog|dogs|dog's|dogs'} -> dog} -> My **dog** fur **be** dark
+
+Stemming chops of ends of words, the obtained element is known as the **stem**.
+
+Lemmisatsion uses vocabulary and mophological analysis of words to return the case or dctionary form of a word, known as a **lemma**.
+
+_Stemming_
+> I **saw** an amazing thing -> I **s** an amazing thing
+
+_Lemmisation_
+> I **saw** an amazing thing -> I **see** an amazing thing
+
+This removes variation/information in our corpus, but it's necessary for generalisation.
+
+b) **Coreference resolution** -- Solving coreferences in the corpus, part of normalising or preprocessing task.
+
+c) **Part-of-speech (POS) Tagging** -- Marking words in a corpus by assigning a syntatic category.
+
+- _Open class categories or types_ (those with relatively fixed membership): **noun, verb, adjective, adverb**
+
+- _Closed class types_: **preposition, determiner, pronoun, conjunction, auxiliary verb, particle, numeral.**
+
+I (Preposition) want (verb) to play (verb) the piano (noun)
+
+d) **Dependency Parsing**: Instead of categorising (POS tag), we may want to know the role of that word in a specific sentence of our corpus. The objective is to obtain the dependencies or relations of words in the format of a dependency tree. 
+
+The considered dependencies are general terms: **subject, object, complement and modifier**
+
+SpaCy's dependency tree can be visualised with displaCy. 
+
+`want — I: nominal subject.`
+`want — play: open clausal complement.`
+`play — to: auxiliary verb.`
+`play — the piano: direct object`
+
+Where a---b:R means "_b is R of a". " _The piano is direct object of play_ " where _play---the piano: direct object_
+
+e) **Name Entity Recognition (NER)**: Creating a semantic field depndent of a context (entity). E.g. 'Batman' and 'Avatar' are instances of a group called 'films'. But 'Steven Spielberg' is categorised as a 'director'. NER is to detect relevant entities in our corpus. 
+“James Cameron (director) filmed part of Avatar (film) in New Zealand (location)”
+
