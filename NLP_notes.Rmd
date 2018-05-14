@@ -31,7 +31,9 @@ Machine Learning (ML), Deep Learning (neural nets) are a set of tools used to so
 
 ## Basic NLP Techniques
 
-a) **Setmming and lemmatising** -- Reducing forms of a word to a common base form.
+### a) Stemming and lemmatising 
+
+Reducing forms of a word to a common base form.
 
 > I **am** a student -> {am|are|is} -> I **be** a student 
 
@@ -49,9 +51,13 @@ _Lemmisation_
 
 This removes variation/information in our corpus, but it's necessary for generalisation.
 
-b) **Coreference resolution** -- Solving coreferences in the corpus, part of normalising or preprocessing task.
+### b) Coreference resolution
 
-c) **Part-of-speech (POS) Tagging** -- Marking words in a corpus by assigning a syntatic category.
+Solving coreferences in the corpus, part of normalising or preprocessing task.
+
+### c) Part-of-speech (POS) Tagging 
+
+Marking words in a corpus by assigning a syntatic category.
 
 - _Open class categories or types_ (those with relatively fixed membership): **noun, verb, adjective, adverb**
 
@@ -59,19 +65,76 @@ c) **Part-of-speech (POS) Tagging** -- Marking words in a corpus by assigning a 
 
 I (Preposition) want (verb) to play (verb) the piano (noun)
 
-d) **Dependency Parsing**: Instead of categorising (POS tag), we may want to know the role of that word in a specific sentence of our corpus. The objective is to obtain the dependencies or relations of words in the format of a dependency tree. 
+### d) Dependency Parsing
+
+Instead of categorising (POS tag), we may want to know the role of that word in a specific sentence of our corpus. The objective is to obtain the dependencies or relations of words in the format of a dependency tree. 
 
 The considered dependencies are general terms: **subject, object, complement and modifier**
 
 SpaCy's dependency tree can be visualised with displaCy. 
 
 `want — I: nominal subject.`
+
 `want — play: open clausal complement.`
+
 `play — to: auxiliary verb.`
+
 `play — the piano: direct object`
 
 Where a---b:R means "_b is R of a". " _The piano is direct object of play_ " where _play---the piano: direct object_
 
-e) **Name Entity Recognition (NER)**: Creating a semantic field depndent of a context (entity). E.g. 'Batman' and 'Avatar' are instances of a group called 'films'. But 'Steven Spielberg' is categorised as a 'director'. NER is to detect relevant entities in our corpus. 
+### e) Name Entity Recognition (NER)
+
+Creating a semantic field depndent of a context (entity). E.g. 'Batman' and 'Avatar' are instances of a group called 'films'. But 'Steven Spielberg' is categorised as a 'director'. NER is to detect relevant entities in our corpus. 
+
 “James Cameron (director) filmed part of Avatar (film) in New Zealand (location)”
 
+
+# Overview of an NLP workflow
+
+<https://medium.com/@gon.esbuyo/get-started-with-nlp-part-ii-overview-of-an-nlp-workflow-7ba1f5948b24>
+
+## NPL workflow
+
+```{r, echo=FALSE}
+# Define variable containing url
+url <- "https://cdn-images-1.medium.com/max/2000/1*OgD8_FmQFBJ_cKst_H3WWw.jpeg"
+```
+
+![](`r url`)
+
+## 1. Preprocessing
+
+There are two main types of data:
+
+1) **Structured data**: Data tables, data.frames, SQL tables.
+
+2) **Unstructured data**: Information we consume that has no well defined systematic structure. Natural language is *unstructured* data.
+
+NLP provides a set of tools to structure natural language for different purposes. Our dataset is alled a corpus (corpora for plural).
+
+Preproessing -> Text normalisation (or data preparation). 
+
+## 2. Structuring
+
+Organising corpus in different ways. 
+
+- **Entities**
+
+- **Intents**
+
+- **POS tagging**
+
+- **Dependency Parsing**
+
+- **Topic Modelling**
+
+- **Sentiment analysis**
+
+## 3. Analysis
+
+We can now proceed to look at structured information.
+
+## Transformation
+
+Using NLP to fulfill a purpose. Translating the obtained information into an interpretable source to make decisions, observe or analyse. Could be data visualiastion, proportins, predominant detected class, language generation, speech synthesis.
